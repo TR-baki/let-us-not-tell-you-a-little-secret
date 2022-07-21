@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class SpringBootIntegrationWithAwsSecretsManagerApplication
 
 fun main(args: Array<String>) {
-	runApplication<SpringBootIntegrationWithAwsSecretsManagerApplication>(*args)
+    runApplication<SpringBootIntegrationWithAwsSecretsManagerApplication>(*args)
 }

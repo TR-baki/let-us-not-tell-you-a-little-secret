@@ -1,1 +1,41 @@
+management:
+  server:
+    port: 8081
+    ssl:
+      enabled: false
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include:
+          - info
+          - health
+          - metrics
+          - prometheus
+          - mappings
+          - scheduledtasks
+          - env
+  endpoint:
+    info:
+      enabled: true
+    health:
+      enabled: true
+      show-details: always
+      sensitive: true
+    metrics:
+      enabled: true
+    env:
+      enabled: true
+    prometheus:
+      enabled: true
+    mappings:
+      enabled: true
+    scheduledtasks:
+      enabled: true
 
+spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.actuate.autoconfigure.security.servlet.ManagementWebSecurityAutoConfiguration
+      - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+      - org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
