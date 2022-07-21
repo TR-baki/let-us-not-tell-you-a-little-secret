@@ -40,4 +40,4 @@ spring:
       - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
       - org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
   config:
-    import: "aws-secretsmanager:secretmanager"
+    import: "aws-secretsmanager:testsecret"
