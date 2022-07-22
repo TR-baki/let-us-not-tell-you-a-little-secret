@@ -63,6 +63,7 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
+            - containerPort: 8081
             - containerPort: 8443
           securityContext:
             runAsUser: 12345
