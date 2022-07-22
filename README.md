@@ -1,6 +1,6 @@
-#No more secrets in GitHub
+# No more secrets in GitHub
 
-##Infrastructure
+## Infrastructure
 In the case that you have configured an AWS Secret Manager within your Kubernetes Cluster (EKS), the full benefits can be taken advantage of:
 - the secrets are managed centrally with fine-grained (IAM) policies 
 - the secrets can easily be (automatically) rotated
@@ -8,7 +8,7 @@ In the case that you have configured an AWS Secret Manager within your Kubernete
 
 However, regardless of where the secrets come from, as long as they are mounted as volumes in the pod's filesystem, the application would work in the same way.
 
-##Application
+## Application
 This application uses the Spring Boot's [ConfigTree](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.files.configtree) support to load secrets into the application environment from a ConfigTree (Kubernetes [secret] volume mount).
 
 
@@ -18,7 +18,7 @@ If not provided, it will default do an empty string, which in Kubernetes would b
 
 It additionally provides a small wrapper class `Secret`, which prevents the clearText secrets being logged by overriding their `toString()` method in line with Spring Security recommendations.
 
-##Usage
+## Usage
 If using the AWS Secrets Manager integration with Kubernetes, the following file needs to be provided:
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
@@ -79,9 +79,9 @@ spec:
 
 ```
 
-##Future improvements:
+## Future improvements:
 
-###1. Help Spring Boot implement a refreshable ConfigTree. 
+### 1. Help Spring Boot implement a refreshable ConfigTree. 
 At this point of time, their implementation only allows caching the contents of the ConfigTree when it is created. 
 
 If the files change, which is the case when a secret is updated, only reinitialization of the `Application Context` will reload the changes in secrets. 
