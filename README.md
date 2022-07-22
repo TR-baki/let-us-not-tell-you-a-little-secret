@@ -35,7 +35,7 @@ spec:
           objectAlias: "/app/config/secrets/testsecret1"
 
 ```
-This will ensure that the secrets from AWS Secrets manager are mounted in the Kubernetes (EKS) pod's filesystem under the paths specified by the key `objectAlias`.
+This will ensure that the secrets from AWS Secrets Manager are mounted in the Kubernetes (EKS) pod's filesystem under the paths specified by the key `objectAlias`.
 
 Once the application has been containerized, we can have a deployment similar to this: 
 ```yaml
