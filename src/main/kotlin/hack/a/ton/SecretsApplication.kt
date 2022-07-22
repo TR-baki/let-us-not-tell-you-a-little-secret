@@ -1,4 +1,4 @@
-package hack.a.ton.secrets
+package hack.a.ton
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

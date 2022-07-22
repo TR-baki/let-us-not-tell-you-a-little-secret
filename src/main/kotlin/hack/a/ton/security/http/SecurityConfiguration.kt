@@ -1,4 +1,4 @@
-package hack.a.ton.secrets.security.http
+package hack.a.ton.security.http
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
@@ -35,28 +35,22 @@ class SecurityConfiguration {
 //            .build()
 //    }
 //
-//    @Bean
-//    @Order(Ordered.LOWEST_PRECEDENCE - 1)
-//    fun actuatorFilterChain(
-//        httpSecurity: HttpSecurity,
-//        @Value("\${management.server.port}") managementPort: Int
-//    ): SecurityFilterChain {
-//
-//        val actuatorRequestMatcher = AndRequestMatcher(
-//            RequestMatcher { it.localPort == managementPort },
-//            AntPathRequestMatcher("/actuator/**")
-//        )
-//
-//        httpSecurity
-//            .requestMatchers { it.requestMatchers(actuatorRequestMatcher) }
-//            .authorizeRequests().anyRequest().permitAll().and()
-//            .sessionManagement().disable()
-//            .formLogin().disable()
-//            .logout().disable()
-//            .httpBasic().disable()
-//            .csrf().disable()
-//            .cors().disable()
-//
-//        return httpSecurity.build()
-//    }
+    @Bean
+    @Order(Ordered.LOWEST_PRECEDENCE - 1)
+    fun actuatorFilterChain(
+        httpSecurity: HttpSecurity,
+        @Value("\${management.server.port}") managementPort: Int
+    ): SecurityFilterChain {
+        httpSecurity
+            .requestMatchers().anyRequest().and()
+            .authorizeRequests().anyRequest().permitAll().and()
+            .sessionManagement().disable()
+            .formLogin().disable()
+            .logout().disable()
+            .httpBasic().disable()
+            .csrf().disable()
+            .cors().disable()
+
+        return httpSecurity.build()
+    }
 }

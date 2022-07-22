@@ -1,8 +1,10 @@
+logging:
+  level:
+    org.springframework: DEBUG
+
 management:
   server:
     port: 8081
-    ssl:
-      enabled: false
   endpoints:
     enabled-by-default: false
     web:
@@ -15,13 +17,13 @@ management:
           - mappings
           - scheduledtasks
           - env
+          - refresh
   endpoint:
     info:
       enabled: true
     health:
       enabled: true
       show-details: always
-      sensitive: true
     metrics:
       enabled: true
     env:
@@ -32,6 +34,8 @@ management:
       enabled: true
     scheduledtasks:
       enabled: true
+    refresh:
+      enabled: true
 
 spring:
   autoconfigure:
@@ -40,4 +44,4 @@ spring:
       - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
       - org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
   config:
-    import: "aws-secretsmanager:testsecret"
+    import: "configtree:${SECRETS_BASE_PATH:}/app/config/secrets/"
